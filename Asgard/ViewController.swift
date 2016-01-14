@@ -8,20 +8,41 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, WifiObserver {
 
+    @IBOutlet var ssidField: NSTextField!
+    var wifiManager: WifiManager = WifiManager()
+    var settingsManager: SettingsManager = SettingsManager()
+    
+    // Set the SSIDs that you would like to disable the wake from sleep login prompt for
+    let ssidsWhiteListed: Array<String> = ["DDW365.45F686-2.4G", "🌚"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        wifiManager.delegate = self
+        wifiManager.startWifiScanning()
     }
+    
+    // MARK : WifiObserver
+    
+    func wifiDidChange(previousNetwork: WifiNetwork, newNetwork: WifiNetwork) {
 
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
+        let newNetworkName = newNetwork.ssidString
+        
+        var labelString: String!
+        
+        let whiteListed = ssidsWhiteListed.contains(newNetworkName)
+        if whiteListed {
+            settingsManager.passwordOnWake(false)
+            labelString = "\(newNetworkName) - Password Disabled"
         }
+        else {
+            settingsManager.passwordOnWake(true)
+            labelString = "\(newNetworkName) - Password Enabled"
+        }
+        
+        // Update UI
+        ssidField.stringValue = labelString
     }
-
-
 }
 

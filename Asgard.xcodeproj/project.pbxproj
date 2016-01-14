@@ -11,6 +11,8 @@
 		324AAC801C476B8400C73EAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324AAC7F1C476B8400C73EAC /* ViewController.swift */; };
 		324AAC821C476B8400C73EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324AAC811C476B8400C73EAC /* Assets.xcassets */; };
 		324AAC851C476B8400C73EAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324AAC831C476B8400C73EAC /* Main.storyboard */; };
+		324AAC8D1C476B9200C73EAC /* WifiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324AAC8C1C476B9200C73EAC /* WifiManager.swift */; };
+		324AAC8F1C478FCC00C73EAC /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324AAC8E1C478FCC00C73EAC /* SettingsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		324AAC811C476B8400C73EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		324AAC841C476B8400C73EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		324AAC861C476B8400C73EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		324AAC8C1C476B9200C73EAC /* WifiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiManager.swift; sourceTree = "<group>"; };
+		324AAC8E1C478FCC00C73EAC /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				324AAC7D1C476B8400C73EAC /* AppDelegate.swift */,
 				324AAC7F1C476B8400C73EAC /* ViewController.swift */,
+				324AAC8C1C476B9200C73EAC /* WifiManager.swift */,
+				324AAC8E1C478FCC00C73EAC /* SettingsManager.swift */,
 				324AAC811C476B8400C73EAC /* Assets.xcassets */,
 				324AAC831C476B8400C73EAC /* Main.storyboard */,
 				324AAC861C476B8400C73EAC /* Info.plist */,
@@ -131,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				324AAC8F1C478FCC00C73EAC /* SettingsManager.swift in Sources */,
+				324AAC8D1C476B9200C73EAC /* WifiManager.swift in Sources */,
 				324AAC801C476B8400C73EAC /* ViewController.swift in Sources */,
 				324AAC7E1C476B8400C73EAC /* AppDelegate.swift in Sources */,
 			);
