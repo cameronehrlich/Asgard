@@ -25,13 +25,13 @@ class ViewController: NSViewController, WifiObserver {
     
     // MARK : WifiObserver
     
-    func wifiDidChange(previousNetwork: WifiNetwork, newNetwork: WifiNetwork) {
+    func wifiDidChange(_ previousNetwork: WifiNetwork, newNetwork: WifiNetwork) {
 
         let newNetworkName = newNetwork.ssidString
         
         var labelString: String!
         
-        let whiteListed = ssidsWhiteListed.contains(newNetworkName)
+        let whiteListed = ssidsWhiteListed.contains(newNetworkName!)
         if whiteListed {
             settingsManager.passwordOnWake(false)
             labelString = "\(newNetworkName) - Password Disabled"

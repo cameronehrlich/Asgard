@@ -10,7 +10,7 @@ import Foundation
 
 class SettingsManager: NSObject {
 
-    func passwordOnWake(Enabled: Bool) -> Void {
+    func passwordOnWake(_ Enabled: Bool) -> Void {
         
         // defaults write com.apple.screensaver askForPasswordDelay 0
         // Needs to get set, but it appears that it only picks up the changes after a login/out 
@@ -19,16 +19,16 @@ class SettingsManager: NSObject {
         let command: String = "tell application \"System Events\" to set " +
                                 "require password to wake of security preferences to \(enabledString)"
         
-        let task = NSTask()
+        let task = Process()
         task.launchPath = "/usr/bin/osascript"
         task.arguments = ["-e", command]
         
-        let pipe = NSPipe()
+        let pipe = Pipe()
         task.standardOutput = pipe
         task.launch()
         
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output: String = String(data: data, encoding: NSUTF8StringEncoding)!
+        let output: String = String(data: data, encoding: String.Encoding.utf8)!
         
         print(output)
     }

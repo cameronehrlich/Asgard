@@ -11,35 +11,35 @@ import CoreWLAN
 
 struct WifiNetwork: Equatable {
     let ssidString: String!
-    let ssidData: NSData!
+    let ssidData: Data!
 }
 
 func ==(lhs: WifiNetwork, rhs: WifiNetwork) -> Bool {
-    return lhs.ssidString == rhs.ssidString && lhs.ssidData.isEqualToData(rhs.ssidData)
+    return lhs.ssidString == rhs.ssidString && lhs.ssidData == rhs.ssidData
 }
 
 protocol WifiObserver {
-    func wifiDidChange(previousNetwork: WifiNetwork, newNetwork: WifiNetwork)
+    func wifiDidChange(_ previousNetwork: WifiNetwork, newNetwork: WifiNetwork)
 }
 
 class WifiManager: NSObject {
     
     var delegate: WifiObserver?
     
-    private let wifiScanInterval :NSTimeInterval = 2;
-    private let wifiInterface = CWWiFiClient.sharedWiFiClient().interface()
-    private var scanningTimer: NSTimer!
+    fileprivate let wifiScanInterval :TimeInterval = 2;
+    fileprivate let wifiInterface = CWWiFiClient.shared().interface()
+    fileprivate var scanningTimer: Timer!
     
-    private var previousNetwork: WifiNetwork!
-    private var currentNetwork: WifiNetwork!
+    fileprivate var previousNetwork: WifiNetwork!
+    fileprivate var currentNetwork: WifiNetwork!
     
     override init() {
         super.init()
-        scanningTimer = NSTimer(timeInterval: wifiScanInterval, target: self, selector: Selector("checkSSID"), userInfo: nil, repeats: true)
+        scanningTimer = Timer(timeInterval: wifiScanInterval, target: self, selector: #selector(WifiManager.checkSSID), userInfo: nil, repeats: true)
     }
     
     func startWifiScanning() {
-        NSRunLoop.mainRunLoop().addTimer(scanningTimer, forMode: NSRunLoopCommonModes)
+        RunLoop.main.add(scanningTimer, forMode: RunLoopMode.commonModes)
     }
     
     func stopWifiScanning() {
